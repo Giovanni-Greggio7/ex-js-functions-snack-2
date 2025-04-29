@@ -135,10 +135,35 @@ function eseguiEFerma(avvio, messaggio, stop){
 
 }
 
-eseguiEFerma(
-    () => console.log('Inizio scansione'),
-    ('Nessun rilevamento dalla scansione'),
-    () => console.log('Oggetto identificato')
-)
+// eseguiEFerma(
+//     () => console.log('Inizio scansione'),
+//     ('Nessun rilevamento dalla scansione'),
+//     () => console.log('Oggetto identificato')
+// )
+
+//SNACK 8(BONUS)
+//Crea una funzione che simula un conto alla rovescia
+//Scrivi una funzione contoAllaRovescia che accetta un numero n e stampa il conto alla rovescia da n a 0, con un intervallo di 1 secondo tra ogni numero. Quando arriva a 0, stampa "Tempo scaduto!" e interrompe il timer.
+
+let countdown 
+
+function contoAllaRovescia(a){
+
+    let count = a
+
+    countdown = setInterval(() =>{
+        
+        console.log(count)
+        count--
+
+        if(count === 0){
+            clearInterval(countdown)
+            console.log('Tempo scaduto!')
+        }
+    }, 1000)
+
+}
+
+console.log(contoAllaRovescia(5))
 
 
