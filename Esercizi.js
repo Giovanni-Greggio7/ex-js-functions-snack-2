@@ -72,16 +72,17 @@ creaTimer()
 //Nota: Questa funzione creerà un loop infinito. Interrompilo manualmente o usa clearInterval() in un altro script.
 
 let contatore = 0
+let intervallo
 
 function stampaOgniSecondo(){
 
-    setInterval(() =>{
+    intervallo = setInterval(() =>{
 
         console.log('Passato un secondo')
         contatore++
 
         if(contatore === 5){
-            clearInterval(stampaOgniSecondo)
+            clearInterval(intervallo)
             console.log('Fermato il contatore')
         }
 
@@ -89,7 +90,7 @@ function stampaOgniSecondo(){
 
 }
 
-// console.log(stampaOgniSecondo())
+console.log(stampaOgniSecondo())
 
 
 
