@@ -160,10 +160,50 @@ function contoAllaRovescia(a){
             clearInterval(countdown)
             console.log('Tempo scaduto!')
         }
+
     }, 1000)
 
 }
 
-console.log(contoAllaRovescia(5))
+// console.log(contoAllaRovescia(5))
+
+//SNACK 9(BONUS)
+//Creare una funzione che esegue una sequenza di operazioni con ritardi
+//Scrivi una funzione sequenzaOperazioni che accetta un array di operazioni (funzioni) e un tempo di intervallo.
+//Ogni operazione deve essere eseguita in sequenza con un ritardo uguale al tempo di intervallo.
+
+const array = [
+    () => console.log("Ciao!"),
+    () => console.log("Come..."),
+    () => console.log("...stai?")
+];
+
+function sequenzaOperazioni(array, intervallo){
+
+    for(let i = 0; i < array.length; i++){
+
+        let ritardo = i * intervallo
+
+        setTimeout(() => {
+
+            array[i]()
+
+        }, ritardo)
+    }
+
+}
+
+sequenzaOperazioni([
+    () => console.log("Ciao!"),
+    () => console.log("Come..."),
+    () => console.log("...stai?")
+  ], 2000);
+
+
+
+
+
+
+
 
 
