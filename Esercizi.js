@@ -193,11 +193,60 @@ function sequenzaOperazioni(array, intervallo){
 
 }
 
-sequenzaOperazioni([
-    () => console.log("Ciao!"),
-    () => console.log("Come..."),
-    () => console.log("...stai?")
-  ], 2000);
+// sequenzaOperazioni([
+//     () => console.log("Ciao!"),
+//     () => console.log("Come..."),
+//     () => console.log("...stai?")
+//   ], 2000);
+
+
+//SNACK 10
+//Creare un throttler per limitare l’esecuzione di una funzione
+//Scrivi una funzione creaThrottler che accetta una funzione e un tempo `limite`.
+//Restituisce una nuova funzione che, quando chiamata ripetutamente, esegue l'operazione originale al massimo una volta ogni n millisecondi.
+
+// function creaThrottler(callback, limite){
+
+//      let ultimaEsecuzione = 0
+
+//      return function(...args){
+
+//         const ora = Date.now()
+
+//         if(ora - ultimaEsecuzione >= limite){
+//             ultimaEsecuzione = ora
+//             callback(...args)
+//         } else {
+//             console.log('Non posso eseguire')
+//         }
+//      }
+
+// }
+
+function creaThrottler(callback, tempo) {
+
+    let puòFare = true
+
+    return () => {
+
+        if (puòFare) {
+            callback();
+            puòFare = false;
+
+            setTimeout(() => {
+                puòFare = true;
+            }, tempo);
+        }
+    };
+}
+
+const throttledLog = creaThrottler(() => console.log("Eseguito!"), 2000);
+
+throttledLog(); // ✅ "Eseguito!"
+throttledLog(); // ❌ Ignorato (chiamato troppo presto)
+setTimeout(throttledLog, 2500); // ✅ "Eseguito!" (dopo 2.5 secondi)
+
+
 
 
 
