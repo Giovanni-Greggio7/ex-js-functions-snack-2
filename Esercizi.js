@@ -19,10 +19,23 @@ const somma2 = function somma1(numero1, numero2){
 
 // Quindi, riscrivi la funzione somma con la sintassi delle arrow functions.
 
-const somma = (numero1, numero2) => (numero1 + numero2)
+const somma3 = (numero1, numero2) => (numero1 + numero2)
 
 
-console.log(somma(5, 3))
+console.log(somma3(5, 3))
+
+//SNACK 2
+//Crea una arrow function che calcola il quadrato di un numero.
+
+const moltiplica = (numero) => (numero * numero)
+
+console.log(moltiplica(3))
+
+//Definisci una funzione chiamata quadrato che accetta un numero e restituisce il suo quadrato in una sola riga.
+
+const quadrato1 = numero => numero * numero
+
+console.log(quadrato1(5))
 
 
 
