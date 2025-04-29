@@ -64,7 +64,7 @@ function creaTimer(){
     }, 1000)
 }
 
-creaTimer()
+// creaTimer()
 
 //SNACK 5
 //Crea una funzione stampaOgniSecondo con setInterval.
@@ -90,7 +90,7 @@ function stampaOgniSecondo(){
 
 }
 
-console.log(stampaOgniSecondo())
+// console.log(stampaOgniSecondo())
 
 //SNACK 6
 //Crea un contatore automatico con setInterval
@@ -108,4 +108,34 @@ function creaContatoreAutomatico(){
 
 }
 
-console.log(creaContatoreAutomatico())
+// console.log(creaContatoreAutomatico())
+
+//SNACK 7
+//Crea una funzione che ferma un timer dopo un certo tempo
+//Scrivi una funzione eseguiEferma che accetta un messaggio, un tempo di avvio e un tempo di stop. Il messaggio deve essere stampato a intervalli regolari, ma si deve fermare dopo il tempo di stop.
+
+conta = 0
+let idIntervallo
+
+function eseguiEFerma(avvio, stop){
+
+    avvio();
+
+    idIntervallo = setInterval(() => {
+        
+        console.log('Nessun rilevamento dalla scansione')
+        conta++
+
+        if(conta === 3){
+            clearInterval(idIntervallo)
+            stop()
+        }
+    }, 3000)
+}
+
+eseguiEFerma(
+    () => console.log('Inizio scansione'),
+    () => console.log('Oggetto identificato')
+)
+
+
