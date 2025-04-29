@@ -117,24 +117,27 @@ function creaContatoreAutomatico(){
 conta = 0
 let idIntervallo
 
-function eseguiEFerma(avvio, stop){
+function eseguiEFerma(avvio, messaggio, stop){
 
-    avvio();
+    avvio && avvio();
 
     idIntervallo = setInterval(() => {
-        
-        console.log('Nessun rilevamento dalla scansione')
+
+        console.log(messaggio)
         conta++
 
         if(conta === 3){
             clearInterval(idIntervallo)
-            stop()
+            stop && stop()
         }
+
     }, 3000)
+
 }
 
 eseguiEFerma(
     () => console.log('Inizio scansione'),
+    ('Nessun rilevamento dalla scansione'),
     () => console.log('Oggetto identificato')
 )
 
