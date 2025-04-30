@@ -3,15 +3,15 @@
 // Crea una funzione che somma due numeri.
 // Crea una funzione dichiarativa chiamata somma che accetta due numeri e restituisce la loro somma.
 
-function somma1(numero1, numero2){
-    return a + b 
+function somma1(numero1, numero2) {
+    return a + b
 }
 
 // console.log(somma(2, 3))
 
 // Poi, definisci la stessa funzione somma ma come funzione anonima assegnata a una variabile
 
-const somma2 = function somma1(numero1, numero2){
+const somma2 = function somma1(numero1, numero2) {
     return a + b
 }
 
@@ -20,6 +20,8 @@ const somma2 = function somma1(numero1, numero2){
 // Quindi, riscrivi la funzione somma con la sintassi delle arrow functions.
 
 const somma3 = (numero1, numero2) => (numero1 + numero2)
+
+// const somma = (a, b) => a + b //CORREZIONE
 
 
 console.log(somma3(5, 3))
@@ -34,6 +36,8 @@ console.log(moltiplica(3))
 //Definisci una funzione chiamata quadrato che accetta un numero e restituisce il suo quadrato in una sola riga.
 
 const quadrato1 = numero => numero * numero
+
+//const quadrato = numero => numero ** 2 //Altro metodo per elevare alla potenza
 
 console.log(quadrato1(5))
 
@@ -57,14 +61,15 @@ console.log(eseguiOperazione(4, 4, divisione))
 //Crea un generatore di funzioni creaTimer
 //Scrivi una funzione creaTimer che accetta un tempo (in ms) e restituisce una nuova funzione che avvia un setTimeout per stampare "Tempo scaduto!".
 
-function creaTimer(){
+function creaTimer(tempo) {
 
     setTimeout(() => {
         console.log('Tempo scaduto')
-    }, 1000)
+    }, tempo)
+
 }
 
-// creaTimer()
+// creaTimer(5000)
 
 //SNACK 5
 //Crea una funzione stampaOgniSecondo con setInterval.
@@ -74,14 +79,14 @@ function creaTimer(){
 let contatore = 0
 let intervallo
 
-function stampaOgniSecondo(){
+function stampaOgniSecondo(messaggio) {
 
-    intervallo = setInterval(() =>{
+    intervallo = setInterval(() => {
 
-        console.log('Passato un secondo')
+        console.log(messaggio)
         contatore++
 
-        if(contatore === 5){
+        if (contatore === 5) {
             clearInterval(intervallo)
             console.log('Fermato il contatore')
         }
@@ -90,25 +95,28 @@ function stampaOgniSecondo(){
 
 }
 
-// console.log(stampaOgniSecondo())
+// console.log(stampaOgniSecondo(Passato un secondo))
 
 //SNACK 6
 //Crea un contatore automatico con setInterval
 //Definisci una funzione creaContatoreAutomatico che accetta un intervallo di tempo e restituisce una funzione che avvia un setInterval, incrementando un contatore e stampandolo.
 
-let counter = 0
-let interval
 
-function creaContatoreAutomatico(){
+function creaContatoreAutomatico(tempo) {
 
-    interval = setInterval(() =>{
+    let counter = 0
+
+    setInterval(() => {
+
         console.log(`Il contatore é a ${counter + 1}`)
         counter++
-        }, 3000)
+
+    }, tempo)
 
 }
 
-// console.log(creaContatoreAutomatico())
+// const contaOgniSecondo = creaContatoreAutomatico(3000)
+//contaOgniSecondo()
 
 //SNACK 7
 //Crea una funzione che ferma un timer dopo un certo tempo
@@ -117,7 +125,7 @@ function creaContatoreAutomatico(){
 conta = 0
 let idIntervallo
 
-function eseguiEFerma(avvio, messaggio, stop){
+function eseguiEFerma(avvio, messaggio, stop) {
 
     avvio && avvio();
 
@@ -126,7 +134,7 @@ function eseguiEFerma(avvio, messaggio, stop){
         console.log(messaggio)
         conta++
 
-        if(conta === 3){
+        if (conta === 3) {
             clearInterval(idIntervallo)
             stop && stop()
         }
@@ -145,18 +153,18 @@ function eseguiEFerma(avvio, messaggio, stop){
 //Crea una funzione che simula un conto alla rovescia
 //Scrivi una funzione contoAllaRovescia che accetta un numero n e stampa il conto alla rovescia da n a 0, con un intervallo di 1 secondo tra ogni numero. Quando arriva a 0, stampa "Tempo scaduto!" e interrompe il timer.
 
-let countdown 
 
-function contoAllaRovescia(a){
+
+function contoAllaRovescia(a) {
 
     let count = a
 
-    countdown = setInterval(() =>{
-        
+    let countdown = setInterval(() => {
+
         console.log(count)
         count--
 
-        if(count === 0){
+        if (count === 0) {
             clearInterval(countdown)
             console.log('Tempo scaduto!')
         }
@@ -172,32 +180,49 @@ function contoAllaRovescia(a){
 //Scrivi una funzione sequenzaOperazioni che accetta un array di operazioni (funzioni) e un tempo di intervallo.
 //Ogni operazione deve essere eseguita in sequenza con un ritardo uguale al tempo di intervallo.
 
-const array = [
-    () => console.log("Ciao!"),
-    () => console.log("Come..."),
-    () => console.log("...stai?")
-];
+// const array = [
+//     () => console.log("Ciao!"),
+//     () => console.log("Come..."),
+//     () => console.log("...stai?")
+// ];
 
-function sequenzaOperazioni(array, intervallo){
+// function sequenzaOperazioni(array, intervallo) {
 
-    for(let i = 0; i < array.length; i++){
+//     for (let i = 0; i < array.length; i++) {
 
-        let ritardo = i * intervallo
+//         let ritardo = i * intervallo
 
-        setTimeout(() => {
+//         setTimeout(() => {
 
-            array[i]()
+//             array[i]()
 
-        }, ritardo)
-    }
+//         }, ritardo)
+//     }
 
-}
+// }
 
 // sequenzaOperazioni([
 //     () => console.log("Ciao!"),
 //     () => console.log("Come..."),
 //     () => console.log("...stai?")
 //   ], 2000);
+
+//CORREZIONE
+function sequenzaOperazioni2(operazioni, intervallo){
+
+    operazioni.forEach((operazione, index) => {
+        setTimeout(() => {
+            operazione()
+        }, intervallo * index)
+    })
+
+}
+
+sequenzaOperazioni2([
+    () => console.log('Operazione 1'),
+    () => console.log('Operazione 2'),
+    () => console.log('Operazione 3')
+  ], 2000);
 
 
 //SNACK 10
